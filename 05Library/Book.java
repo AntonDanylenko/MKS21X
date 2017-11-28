@@ -1,5 +1,5 @@
 public class Book{
-    String author, title, ISBN;
+    private String author, title, ISBN;
 
     public Book(){
     }

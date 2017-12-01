@@ -123,14 +123,14 @@ public class WordSearch{
 	private void makeRandomNumsRows(int rows, Random rng){
 	  randomNumsRows = new int[wordsToAdd.size()];
 	  for (int n=0; n<wordsToAdd.size(); n++){
-		randomNumsRows[n] = Math.floorMod(rng.nextInt(), rows);
+		randomNumsRows[n] = rng.nextInt() % rows;
 	  }
 	}
 
 	private void makeRandomNumsCols(int cols, Random rng){
 	  randomNumsCols = new int[wordsToAdd.size()];
 	  for (int n=0; n<wordsToAdd.size(); n++){
-		randomNumsCols[n] = Math.floorMod(rng.nextInt(), cols);
+		randomNumsCols[n] = rng.nextInt() % cols;
 	  }
 	}
 
@@ -139,7 +139,7 @@ public class WordSearch{
 	  int[] increments = {-1, 0, 1};
 	  for (int n=0; n<wordsToAdd.size(); n++){
 		//System.out.println(Math.floorMod(rng.nextInt(), 3));
-		randomNumsRInc[n] = increments[Math.floorMod(rng.nextInt(), 3)];
+		randomNumsRInc[n] = increments[rng.nextInt() % 3];
 	  }
 	}
 
@@ -147,7 +147,7 @@ public class WordSearch{
 	  randomNumsCInc = new int[wordsToAdd.size()];
 	  int[] increments = {-1, 0, 1};
 	  for (int n=0; n<wordsToAdd.size(); n++){
-		randomNumsCInc[n] = increments[Math.floorMod(rng.nextInt(), 3)];
+		randomNumsCInc[n] = increments[rng.nextInt() % 3];
 	  }
 	}
 

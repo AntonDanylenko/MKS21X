@@ -2,6 +2,17 @@ public class ReversedCharSequence implements CharSequence{
     String data;
     
     public ReversedCharSequence(String given){
-	for (int n=0; n<given.length(); n+=){
-	    
-	    
+	  data = '';
+	  for (int n=given.length()-1; n>=0; n++){
+	    data += given.charAt(n);
+	  }
+	}
+
+	public char charAt(int index){
+	  return data.charAt(index);
+	}
+
+	public int length(){
+	  return data.length();
+	}
+}

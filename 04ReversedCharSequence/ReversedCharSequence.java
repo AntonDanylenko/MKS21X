@@ -15,4 +15,12 @@ public class ReversedCharSequence implements CharSequence{
 	public int length(){
 	  return data.length();
 	}
+
+	public String subSequence(int start, int end){
+	  return data.subSequence(start, end);
+	}
+
+	public String toString(){
+	  return data;
+	}
 }

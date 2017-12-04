@@ -22,7 +22,7 @@ public class Book{
 	return ISBN;
     }
 
-    public toString(){
+    public String toString(){
 	return title + ", " + author + ", " + ISBN;
     }
 }

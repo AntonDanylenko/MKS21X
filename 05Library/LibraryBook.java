@@ -14,7 +14,11 @@ public abstract class LibraryBook extends Book implements Comparable<LibraryBook
 	return callNumber;
     }
     
-    public compareTo(Book other){
+    public void compareTo(Book other){
 	return this.callNumber.compareTo(other.callNumber);
+    }
+
+    public String toString(){
+	return super() + ", " +  getCallNumber() + ", " + circulationStatus();
     }
 }

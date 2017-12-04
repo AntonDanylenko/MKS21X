@@ -1,12 +1,15 @@
 public class Barcode{
     String zip;
 
-    public Barcode(String zip){
-	if (zip.charAt(0).isDigit){
-	    this.zip = zip;
+    public Barcode(String given){
+	if (given.charAt(0).isDigit){
+	    zip  = given;
 	}
 	else{
+	    zip = toZip(given);
 	}
     }
+
+    
 
 }

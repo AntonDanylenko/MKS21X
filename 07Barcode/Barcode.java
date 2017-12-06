@@ -3,34 +3,33 @@ public class Barcode{
 
     public Barcode(String given){
 	if (given.length()!=5){
-	    throw new IllegalArgumentException;
+	    throw new IllegalArgumentException();
 	}
 	for (int n=0; n<given.length(); n++){
-		if (!given.charAt(n).isDigit()){
-			throw new IllegalArgumentException;
+		if (!Character.isDigit(given.charAt(n))){
+			throw new IllegalArgumentException();
 		}
 	}
 	zip = given;
     }
 
     public String toString(){
-		return this.toCode();
+		return toCode(this.getZip());
 	}
 
 	private static String convert(int num){
-		String[] codes = ["||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"];
+		String[] codes = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
 		return codes[num];
 	}
 
-	private static String convert(String bars){
-		String[] codes = ["||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"];
-		for (int n=0; n<codes.length(); n++){
+	private static int convert(String bars){
+		String[] codes = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
+		for (int n=0; n<codes.length; n++){
 			if (bars.equals(codes[n])){
 				return n;
 			}
 		}
-		throw new IllegalArgumentException;
-		return;
+		throw new IllegalArgumentException();
 	}
 
 	/*private static String numToBars(int number){
@@ -68,11 +67,11 @@ public class Barcode{
 
 	public static String toCode(String given){
 		if (given.length()!=5){
-			throw new IllegalArgumentException;
+			throw new IllegalArgumentException();
 		}
 		for (int n=0; n<given.length(); n++){
-			if (!given.charAt(n).isDigit()){
-				throw new IllegalArgumentException;
+			if (!Character.isDigit(given.charAt(n))){
+				throw new IllegalArgumentException();
 			}
 		}
 		String result = "|";
@@ -90,33 +89,33 @@ public class Barcode{
 	}
 
 	public String getCode(){
-		return this.toCode();
+		return toCode(this.getZip());
 	}
 
 	public static String toZip(String given){
 		String result = "";
 		if (given.length()!=32){
-			throw new IllegalArgumentException;
+			throw new IllegalArgumentException();
 		}
-		if (given.charAt(0)!="|" || given.charAt(31)!="|"){
-			throw new IllegalArgumentException;
+		if (given.charAt(0)!='|' || given.charAt(31)!='|'){
+			throw new IllegalArgumentException();
 		}
 		for (int r=0; r<given.length(); r++){
-			if (given.charAt(r)!="|" || given.charAT(r)!=":"){
-				throw new IllegalArgumentException;
+			if (given.charAt(r)!='|' || given.charAt(r)!=':'){
+				throw new IllegalArgumentException();
 			}
 		}
 		int checkSum = 0;
-		String justCode = given.subString(1,26);
+		String justCode = given.substring(1,26);
 		for (int n=0; n<justCode.length(); n+=5){
-			if (given.subString(n,n+5).equals(":::::") || given.subString(n,n+5).equals("|||||")){
-				throw new IllegalArgumentException;
+			if (given.substring(n,n+5).equals(":::::") || given.substring(n,n+5).equals("|||||")){
+				throw new IllegalArgumentException();
 			}
-			result += convert(given.subString(n,n+5));
-			checkSum += convert(given.subString(n,n+5));
+			result += convert(given.substring(n,n+5));
+			checkSum += convert(given.substring(n,n+5));
 		}
-		if (checkSum!=convert(given.subString(26,31))){
-			throw new IllegalArgumentException;
+		if (checkSum!=convert(given.substring(26,31))){
+			throw new IllegalArgumentException();
 		}
 		return result;
 	}
@@ -130,6 +129,6 @@ public class Barcode{
 	}
 
 	public int compareTo(Barcode other){
-		return (int)(this.getZip()) - (int)(other.getZip());
+		return Integer.parseInt(this.getZip()) - Integer.parseInt(other.getZip());
 	}
 }

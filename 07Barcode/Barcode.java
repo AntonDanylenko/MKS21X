@@ -14,15 +14,28 @@ public class Barcode{
 		return this.toCode();
 	}
 
-	public String toCode(String given){
-		
+	private static String numToBars(int number){
+	}
+
+	private String toCode(String given){
+		String result = "|";
+		int checkingNum = 0;
+		for (int n=0; n<given.length(); n++){
+			checkingNum += (int)(given.charAt(n));
+		}
+		for (int r=0; r<given.length(); r++){
+			result += numToBars((int)(given.charAt(r)));
+		}
+		result += numToBars(checkingNum);
+		result += "|";
+		return result;
 	}
 
 	public String getCode(){
 		return this.toCode();
 	}
 
-	public String toZip(String given){
+	private String toZip(String given){
 	}
 
 	public String getZip(){

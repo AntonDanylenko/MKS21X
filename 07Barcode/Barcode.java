@@ -17,7 +17,23 @@ public class Barcode{
 		return this.toCode();
 	}
 
-	private static String numToBars(int number){
+	private static String convert(int num){
+		String[] codes = ["||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"];
+		return codes[num];
+	}
+
+	private static String convert(String bars){
+		String[] codes = ["||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"];
+		for (int n=0; n<codes.length(); n++){
+			if (bars.equals(codes[n])){
+				return n;
+			}
+		}
+		throw new IllegalArgumentException;
+		return;
+	}
+
+	/*private static String numToBars(int number){
 		if (number==0){
 			return "||:::";
 		}
@@ -48,7 +64,7 @@ public class Barcode{
 		else{
 			return "|:|::";
 		}
-	}
+	}*/
 
 	public static String toCode(String given){
 		if (given.length()!=5){
@@ -66,18 +82,15 @@ public class Barcode{
 		}
 		checkingNum = checkingNum%10;
 		for (int r=0; r<given.length(); r++){
-			result += numToBars((int)(given.charAt(r)));
+			result += convert((int)(given.charAt(r)));
 		}
-		result += numToBars(checkingNum);
+		result += convert(checkingNum);
 		result += "|";
 		return result;
 	}
 
 	public String getCode(){
 		return this.toCode();
-	}
-
-	private static barsToNum(String bars){
 	}
 
 	public static String toZip(String given){
@@ -99,10 +112,10 @@ public class Barcode{
 			if (given.subString(n,n+5).equals(":::::") || given.subString(n,n+5).equals("|||||")){
 				throw new IllegalArgumentException;
 			}
-			result += barsToNum(given.subString(n,n+5));
-			checkSum += barsToNum(given.subString(n,n+5));
+			result += convert(given.subString(n,n+5));
+			checkSum += convert(given.subString(n,n+5));
 		}
-		if (checkSum!=barsToNum(given.subString(26,31))){
+		if (checkSum!=convert(given.subString(26,31))){
 			throw new IllegalArgumentException;
 		}
 		return result;

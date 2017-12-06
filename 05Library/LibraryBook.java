@@ -14,11 +14,11 @@ public abstract class LibraryBook extends Book implements Comparable<LibraryBook
 	return callNumber;
     }
     
-    public int compareTo(Book other){
+    public int compareTo(LibraryBook other){
 	return this.getCallNumber().compareTo(other.getCallNumber());
     }
 
     public String toString(){
-	return super() + ", " +  getCallNumber() + ", " + circulationStatus();
+	return super.toString() + ", " +  getCallNumber() + ", " + circulationStatus();
     }
 }

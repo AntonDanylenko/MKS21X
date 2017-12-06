@@ -2,12 +2,16 @@ public class Barcode{
     String zip;
 
     public Barcode(String given){
-	if (given.charAt(0).isDigit){
-	    zip  = given;
+	for (int n=0; n<given.length(); n++){
+		if (!given.charAt(n).isDigit()){
+			throw new IllegalArgumentException;
+		}
+	}
+	if (given.length()!=5){
+	    throw new IllegalArgumentException;
 	}
 	else{
-	    zip = toZip(given);
-	}
+		zip = given;
     }
 
     public String toString(){
@@ -67,6 +71,9 @@ public class Barcode{
 	}
 
 	private String toZip(String given){
+		String justCode = given.subString(1,26);
+		for (int n=0; n<justCode.length(); n+=5){
+			
 	}
 
 	public String getZip(){

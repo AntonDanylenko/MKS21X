@@ -2,16 +2,15 @@ public class Barcode{
     String zip;
 
     public Barcode(String given){
+	if (given.length()!=5){
+	    throw new IllegalArgumentException;
+	}
 	for (int n=0; n<given.length(); n++){
 		if (!given.charAt(n).isDigit()){
 			throw new IllegalArgumentException;
 		}
 	}
-	if (given.length()!=5){
-	    throw new IllegalArgumentException;
-	}
-	else{
-		zip = given;
+	zip = given;
     }
 
     public String toString(){
@@ -51,7 +50,15 @@ public class Barcode{
 		}
 	}
 
-	private String toCode(String given){
+	public static String toCode(String given){
+		if (given.length()!=5){
+			throw new IllegalArgumentException;
+		}
+		for (int n=0; n<given.length(); n++){
+			if (!given.charAt(n).isDigit()){
+				throw new IllegalArgumentException;
+			}
+		}
 		String result = "|";
 		int checkingNum = 0;
 		for (int n=0; n<given.length(); n++){
@@ -70,7 +77,7 @@ public class Barcode{
 		return this.toCode();
 	}
 
-	private String toZip(String given){
+	public static String toZip(String given){
 		String justCode = given.subString(1,26);
 		for (int n=0; n<justCode.length(); n+=5){
 			

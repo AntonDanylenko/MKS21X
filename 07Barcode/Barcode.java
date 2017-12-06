@@ -68,19 +68,20 @@ public class Barcode{
 			throw new IllegalArgumentException();
 		}
 		for (int r=0; r<given.length(); r++){
-			if (given.charAt(r)!='|' || given.charAt(r)!=':'){
+			if (given.charAt(r)!='|' && given.charAt(r)!=':'){
 				throw new IllegalArgumentException();
 			}
 		}
 		int checkSum = 0;
 		String justCode = given.substring(1,26);
 		for (int n=0; n<justCode.length(); n+=5){
-			if (given.substring(n,n+5).equals(":::::") || given.substring(n,n+5).equals("|||||")){
+			if (justCode.substring(n,n+5).equals(":::::") || given.substring(n,n+5).equals("|||||")){
 				throw new IllegalArgumentException();
 			}
-			result += convert(given.substring(n,n+5));
-			checkSum += convert(given.substring(n,n+5));
+			result += convert(justCode.substring(n,n+5));
+			checkSum += convert(justCode.substring(n,n+5));
 		}
+		checkSum = checkSum%10;
 		if (checkSum!=convert(given.substring(26,31))){
 			throw new IllegalArgumentException();
 		}

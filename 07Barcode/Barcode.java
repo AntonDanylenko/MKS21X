@@ -19,7 +19,7 @@ public class Barcode{
 
 	private static String convert(int num){
 		String[] codes = {"||:::",":::||","::|:|","::||:",":|::|",":|:|:",":||::","|:::|","|::|:","|:|::"};
-		return codes[num];
+		return codes[num%10];
 	}
 
 	private static int convert(String bars){
@@ -31,39 +31,6 @@ public class Barcode{
 		}
 		throw new IllegalArgumentException();
 	}
-
-	/*private static String numToBars(int number){
-		if (number==0){
-			return "||:::";
-		}
-		else if (number==1){
-			return ":::||";
-		}
-		else if (number==2){
-			return "::|:|";
-		}
-		else if (number==3){
-			return "::||:";
-		}
-		else if (number==4){
-			return ":|::|";
-		}
-		else if (number==5){
-			return ":|:|:";
-		}
-		else if (number==6){
-			return ":||::";
-		}
-		else if (number==7){
-			return "|:::|";
-		}
-		else if (number==8){
-			return "|::|:";
-		}
-		else{
-			return "|:|::";
-		}
-	}*/
 
 	public static String toCode(String given){
 		if (given.length()!=5){

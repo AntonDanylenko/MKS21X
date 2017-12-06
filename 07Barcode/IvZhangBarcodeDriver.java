@@ -13,19 +13,19 @@ public class IvZhangBarcodeDriver{
 
     Barcode[] listOfBarcodes = {stuy, btech, stech};
 
-    /*for (int i = 0; i < listOfBarcodes.length; i++){
+    for (int i = 0; i < listOfBarcodes.length; i++){
       Barcode current = listOfBarcodes[i];
       System.out.println(current + "\ntoZip result: "
                          + Barcode.toZip(current.getCode())
                          +"\nCorrect? "
                          + Barcode.toZip(current.getCode()).equals(current.getZip())
                          );
-			 }*/
+			 }
 
     System.out.println(ref);
 
     System.out.println(a.getZip());//11245
-    System.out.println(d.getZip());//00234
+    System.out.println(d.getZip());//00294
     System.out.println(a.getCode());// |:::||:::||::|:|:|::|:|:|:::||:|
     System.out.println(a.toString());// |:::||:::||::|:|:|::|:|:|:::||:| (11245)
     System.out.println(b);// |::||:|::|:|:::|:||::||::::|::|| (38760)
@@ -38,8 +38,8 @@ public class IvZhangBarcodeDriver{
     System.out.println(a.equals(c));// true
     System.out.println(a.equals(d));// false
 
-    Barcode e = new Barcode("asdfd"); //Contains non-barcode characters, should throw IllegalArgumentException
-    Barcode f = new Barcode("1234"); //Invalid length, should throw IllegalArgumentException
+    //Barcode e = new Barcode("asdfd"); //Contains non-barcode characters, should throw IllegalArgumentException
+    //Barcode f = new Barcode("1234"); //Invalid length, should throw IllegalArgumentException
 
     //System.out.println(Barcode.toCode("00294")); // |||:::||:::::|:||:|:::|::|:|:|:|
     //System.out.println(Barcode.toCode("asdfd")); //Contains non-barcode characters, should throw IllegalArgumentException

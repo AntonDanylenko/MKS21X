@@ -77,10 +77,35 @@ public class Barcode{
 		return this.toCode();
 	}
 
+	private static barsToNum(String bars){
+	}
+
 	public static String toZip(String given){
+		String result = "";
+		if (given.length()!=32){
+			throw new IllegalArgumentException;
+		}
+		if (given.charAt(0)!="|" || given.charAt(31)!="|"){
+			throw new IllegalArgumentException;
+		}
+		for (int r=0; r<given.length(); r++){
+			if (given.charAt(r)!="|" || given.charAT(r)!=":"){
+				throw new IllegalArgumentException;
+			}
+		}
+		int checkSum = 0;
 		String justCode = given.subString(1,26);
 		for (int n=0; n<justCode.length(); n+=5){
-			
+			if (given.subString(n,n+5).equals(":::::") || given.subString(n,n+5).equals("|||||")){
+				throw new IllegalArgumentException;
+			}
+			result += barsToNum(given.subString(n,n+5));
+			checkSum += barsToNum(given.subString(n,n+5));
+		}
+		if (checkSum!=barsToNum(given.subString(26,31))){
+			throw new IllegalArgumentException;
+		}
+		return result;
 	}
 
 	public String getZip(){

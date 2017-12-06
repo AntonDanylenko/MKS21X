@@ -1,8 +1,8 @@
 import java.util.Iterator;
 
 public class SuperArrayIterator implements Iterator<String>{
-	SuperArray SA;
-	int index;
+	private SuperArray SA;
+	private int index;
 
 	public SuperArrayIterator(SuperArray SA, int index){
 		this.SA = SA;
@@ -16,7 +16,7 @@ public class SuperArrayIterator implements Iterator<String>{
 		else{
 			System.exit(0);
 		}
-		return index-1;
+		return SA.get(index-1);
 	}
 
 	public boolean hasNext(){

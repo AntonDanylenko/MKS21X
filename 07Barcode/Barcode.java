@@ -88,8 +88,10 @@ public class Barcode{
 	}
 
 	public boolean equals(Barcode other){
+		return this.getZip().equals(other.getZip());
 	}
 
 	public int compareTo(Barcode other){
+		return (int)(this.getZip()) - (int)(other.getZip());
 	}
 }

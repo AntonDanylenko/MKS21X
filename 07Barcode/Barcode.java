@@ -15,6 +15,36 @@ public class Barcode{
 	}
 
 	private static String numToBars(int number){
+		if (number==0){
+			return "||:::";
+		}
+		else if (number==1){
+			return ":::||";
+		}
+		else if (number==2){
+			return "::|:|";
+		}
+		else if (number==3){
+			return "::||:";
+		}
+		else if (number==4){
+			return ":|::|";
+		}
+		else if (number==5){
+			return ":|:|:";
+		}
+		else if (number==6){
+			return ":||::";
+		}
+		else if (number==7){
+			return "|:::|";
+		}
+		else if (number==8){
+			return "|::|:";
+		}
+		else{
+			return "|:|::";
+		}
 	}
 
 	private String toCode(String given){
@@ -23,6 +53,7 @@ public class Barcode{
 		for (int n=0; n<given.length(); n++){
 			checkingNum += (int)(given.charAt(n));
 		}
+		checkingNum = checkingNum%10;
 		for (int r=0; r<given.length(); r++){
 			result += numToBars((int)(given.charAt(r)));
 		}

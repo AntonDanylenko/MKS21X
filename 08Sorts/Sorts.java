@@ -26,23 +26,32 @@ public class Sorts{
 	}
 
 
+    public static void bubbleSort(int[] data){
+	while (!isSorted(data)){
+	    for (int n=0; n<data.length-1; n++){
+		if(data[n]>data[n+1]){
+		    swap(data, n, n+1);
+		}
+	    }
+	}
+    }
     
     public static void main(String[]args){
-	int[] randish = new int[15];
+	int[] randish = new int[100];
 	for (int i=0; i<randish.length; i++){
 	    randish[i]=(int)(Math.random()*100);
 	}
 	String toPrint = "";
 	for (int r=0; r<randish.length; r++){
 	    toPrint +=  randish[r];
-	    toPrint += ", ";
+	    toPrint += ",";
 	}
 	System.out.println("Unsorted: " + toPrint);
         selectionSort(randish);
 	String toPrint2 = "";
 	for (int r=0; r<randish.length; r++){
 	    toPrint2 += randish[r];
-	    toPrint2 += ", ";
+	    toPrint2 += ",";
 	}
 	System.out.println("Sorted: " + toPrint2);
     }

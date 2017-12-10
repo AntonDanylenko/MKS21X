@@ -25,6 +25,14 @@ public class Sorts{
 		}
 	}
 
+	public static boolean isSorted(int[] data){
+		for (int n=0; n<data.length-1; n++){
+			if (data[n]>data[n+1]){
+				return false;
+			}
+		}
+		return true;
+	}
 
     public static void bubbleSort(int[] data){
 	while (!isSorted(data)){

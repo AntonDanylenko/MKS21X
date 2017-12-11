@@ -1,10 +1,21 @@
 public class Sorts{
+	//Naming
 	public static String name(){
 		return "09.Danylenko.Anton"; 
 	}
 
 
 
+	//General Helper Functions
+	public static void swap(int[] data, int index1, int index2){
+		int temp = data[index1];
+		data[index1] = data[index2];
+		data[index2] = temp;
+	}
+
+
+
+	//Insertion Sort
 	public static void insertionSort(int[] data){
 		for (int n=1; n<data.length; n++){
 			int r = n;
@@ -17,6 +28,13 @@ public class Sorts{
 
 
 
+	//Selection Sort and Helper Functions
+	public static void selectionSort(int[] data){
+		for (int n=0; n<data.length; n++){
+			swap(data, n, findSmlst(data, n));
+		}
+	}
+
 	public static int findSmlst(int[] data, int start){
 		int posSmlst = start;
 		for (int n=start; n<data.length; n++){
@@ -27,19 +45,18 @@ public class Sorts{
 		return posSmlst;
 	}
 
-    public static void swap(int[] data, int index1, int index2){
-		int temp = data[index1];
-		data[index1] = data[index2];
-		data[index2] = temp;
-	}
 
-	public static void selectionSort(int[] data){
-		for (int n=0; n<data.length; n++){
-			swap(data, n, findSmlst(data, n));
+
+	//Bubble Sort and Helper Functions
+	public static void bubbleSort(int[] data){
+		while (!isSorted(data)){
+			for (int n=0; n<data.length-1; n++){
+				if(data[n]>data[n+1]){
+					swap(data, n, n+1);
+				}
+			}
 		}
 	}
-
-
 
 	public static boolean isSorted(int[] data){
 		for (int n=0; n<data.length-1; n++){
@@ -49,17 +66,10 @@ public class Sorts{
 		}
 		return true;
 	}
-
-    public static void bubbleSort(int[] data){
-	while (!isSorted(data)){
-	    for (int n=0; n<data.length-1; n++){
-		if(data[n]>data[n+1]){
-		    swap(data, n, n+1);
-		}
-	    }
-	}
-    }
     
+
+
+	//Main
     public static void main(String[]args){
 	int[] randish = new int[100];
 	for (int i=0; i<randish.length; i++){
@@ -71,7 +81,7 @@ public class Sorts{
 	    toPrint += ",";
 	}
 	System.out.println("Unsorted: " + toPrint);
-        insertionSort(randish);
+	insertionSort(randish);
 	String toPrint2 = "";
 	for (int r=0; r<randish.length; r++){
 	    toPrint2 += randish[r];

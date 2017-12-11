@@ -3,6 +3,20 @@ public class Sorts{
 		return "09.Danylenko.Anton"; 
 	}
 
+
+
+	public static void insertionSort(int[] data){
+		for (int n=1; n<data.length; n++){
+			int r = n;
+			while (r>0 && data[r]<data[r-1]){
+				swap(data, r, r-1);
+				r--;
+			}
+		}
+	}
+
+
+
 	public static int findSmlst(int[] data, int start){
 		int posSmlst = start;
 		for (int n=start; n<data.length; n++){
@@ -13,10 +27,10 @@ public class Sorts{
 		return posSmlst;
 	}
 
-    public static void swap(int[] data, int value1, int value2){
-		int temp = data[value1];
-		data[value1] = data[value2];
-		data[value2] = temp;
+    public static void swap(int[] data, int index1, int index2){
+		int temp = data[index1];
+		data[index1] = data[index2];
+		data[index2] = temp;
 	}
 
 	public static void selectionSort(int[] data){
@@ -24,6 +38,8 @@ public class Sorts{
 			swap(data, n, findSmlst(data, n));
 		}
 	}
+
+
 
 	public static boolean isSorted(int[] data){
 		for (int n=0; n<data.length-1; n++){
@@ -55,7 +71,7 @@ public class Sorts{
 	    toPrint += ",";
 	}
 	System.out.println("Unsorted: " + toPrint);
-        selectionSort(randish);
+        insertionSort(randish);
 	String toPrint2 = "";
 	for (int r=0; r<randish.length; r++){
 	    toPrint2 += randish[r];

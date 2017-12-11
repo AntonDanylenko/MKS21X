@@ -66,27 +66,4 @@ public class Sorts{
 		}
 		return true;
 	}
-    
-
-
-	//Main
-    public static void main(String[]args){
-	int[] randish = new int[100];
-	for (int i=0; i<randish.length; i++){
-	    randish[i]=(int)(Math.random()*100);
-	}
-	String toPrint = "";
-	for (int r=0; r<randish.length; r++){
-	    toPrint +=  randish[r];
-	    toPrint += ",";
-	}
-	System.out.println("Unsorted: " + toPrint);
-	insertionSort(randish);
-	String toPrint2 = "";
-	for (int r=0; r<randish.length; r++){
-	    toPrint2 += randish[r];
-	    toPrint2 += ",";
-	}
-	System.out.println("Sorted: " + toPrint2);
-    }
 }

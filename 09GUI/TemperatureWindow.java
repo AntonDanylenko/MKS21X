@@ -10,7 +10,7 @@ public class TemperatureWindow extends JFrame implements ActionListener{
     
     public TemperatureWindow() {
         this.setTitle("Temperature Converter");
-        this.setSize(600,400);
+        this.setSize(175,165);
         this.setLocation(100,100);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 

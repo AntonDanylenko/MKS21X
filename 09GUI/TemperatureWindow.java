@@ -6,6 +6,7 @@ public class TemperatureWindow extends JFrame implements ActionListener{
     private JTextField t;
 	private JButton b;
 	private JButton b2;
+	private JButton b3;
     
     public TemperatureWindow() {
         this.setTitle("Temperature Converter");
@@ -19,14 +20,17 @@ public class TemperatureWindow extends JFrame implements ActionListener{
         t = new JTextField(12);
 		b = new JButton("Celcius to Fahrenheit");
 		b2 = new JButton("Fahrenheit to Celcius");
+		b3 = new JButton("Clear");
 
         t.addActionListener(this);
         b.addActionListener(this);
         b2.addActionListener(this);
+        b3.addActionListener(this);
 
         pane.add(t);
 		pane.add(b);
 		pane.add(b2);
+		pane.add(b3);
     }
     
 	public void actionPerformed(ActionEvent e) {
@@ -35,8 +39,11 @@ public class TemperatureWindow extends JFrame implements ActionListener{
 		if (s.equals("Celcius to Fahrenheit")){
 			t.setText(CtoF(temperature) + "");
 		}
-		else{
+		else if (s.equals("Fahrenheit to Celcius")){
 			t.setText(FtoC(temperature) + "");
+		}
+		else{
+			t.setText("");
 		}
     }
 

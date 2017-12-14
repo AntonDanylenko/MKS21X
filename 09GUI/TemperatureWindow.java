@@ -4,7 +4,8 @@ import java.awt.event.*;
 public class TemperatureWindow extends JFrame implements ActionListener{
     private Container pane;
     private JTextField t;
-	private JCheckBox c;
+	private JButton b;
+	private JButton b2;
     
     public TemperatureWindow() {
         this.setTitle("Temperature Converter");
@@ -16,29 +17,22 @@ public class TemperatureWindow extends JFrame implements ActionListener{
         pane.setLayout(new FlowLayout());
 
         t = new JTextField(12);
-		c = new JCheckBox("Celcius to Fahrenheit?");
-		
-		/*String[] convertStrings = {"Celcius to Fahrenheit", "Fahrenheit to Celcius"};
-        JComboBox convert = new JComboBox(convertStrings);
-		convert.setSelectedIndex(1);
-		convert.addActionListener(this);*/
+		b = new JButton("Celcius to Fahrenheit");
+		b2 = new JButton("Fahrenheit to Celcius");
 
         t.addActionListener(this);
-        c.addActionListener(this);
+        b.addActionListener(this);
+        b2.addActionListener(this);
 
         pane.add(t);
-		pane.add(c);
-        //pane.add(convert);
+		pane.add(b);
+		pane.add(b2);
     }
     
 	public void actionPerformed(ActionEvent e) {
-        //JComboBox cb = (JComboBox)e.getSource();
-        //String convertType = (String)cb.getSelectedItem();
-		//if (convertType.equals("Celcius to Fahrenheit")){
-		//	setText(CtoF(
 		String s = e.getActionCommand();
 		double temperature = Double.parseDouble(t.getText());
-		if (c.isSelected()){
+		if (s.equals("Celcius to Fahrenheit")){
 			t.setText(CtoF(temperature) + "");
 		}
 		else{

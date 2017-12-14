@@ -6,15 +6,17 @@ public class GraphingCalculator{
 	for (int n=-50; n<51; n++){
 	    double ycord = 0;
 	    points[n+50][0] = n;
+	    double a = 1;
 	    for (int r=2; r<equation.length(); r++){
-		if (equation.charAt(r).isDigit() || equation.charAt(r)=='.'){
-		    double a;
+		if (Character.isDigit(equation.charAt(r)) ||
+		    equation.charAt(r)=='.'){
 		    int s=r;
-		    while (equation.charAt(s).isDigit() || equation.charAt(s)=='.'){
+		    while (Character.isDigit(equation.charAt(s)) ||
+			   equation.charAt(s)=='.'){
 			s++;
 		    }
-		    double a = Double.parseDouble(equation.substring(r,s+1));
-		    r=s;
+		    a = Double.parseDouble(equation.substring(r,s));
+		    r=s-1;
 		}
 		else if(equation.charAt(r)=='x'){
 		    ycord = a * n;
@@ -26,18 +28,19 @@ public class GraphingCalculator{
 
     public String toString(){
 	String result = "[";
-	for (int n=0; n<points.length-1; n++){
+	for (int n=0; n<points.length; n++){
 	    result += "[";
-	    result += points[n][r];
+	    result += points[n][0];
 	    result += ",";
 	    result += points[n][1];
 	    result += "] ";
 	}
 	result += "]";
+	return result;
     }
 
     public static void main(String[]args){
-	GraphingCalculator g = new GraphingCalculator("y=3.5x");
+	GraphingCalculator g = new GraphingCalculator("y=1.5x");
 	System.out.println(g);
     }
 }

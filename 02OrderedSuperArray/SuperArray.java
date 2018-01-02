@@ -8,6 +8,11 @@ public class SuperArray{
 		size = 0;
     }
 
+    public SuperArray(int capacity){
+		data = new String[capacity];
+		size = 0;
+    }
+
     //4.
     public String toString(){
 		String result = "[";
